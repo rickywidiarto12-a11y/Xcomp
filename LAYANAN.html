@@ -1,0 +1,1063 @@
+
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layanan Service Laptop — Xcomp Salatiga</title>
+    <meta name="description" content="Pelajari layanan service laptop Xcomp: hardware, software, upgrade SSD, dan maintenance. Harga transparan, garansi terpercaya.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #050a12;
+            --surface: #0a1220;
+            --surface2: #0f1e30;
+            --border: rgba(0,200,255,0.12);
+            --border-light: rgba(255,255,255,0.07);
+            --cyan: #00d4ff;
+            --cyan-dim: rgba(0,212,255,0.12);
+            --cyan-glow: rgba(0,212,255,0.3);
+            --blue: #0066ff;
+            --purple: #a78bfa;
+            --purple-dim: rgba(167,139,250,0.12);
+            --green: #00e87a;
+            --green-dim: rgba(0,232,122,0.12);
+            --orange: #fb923c;
+            --orange-dim: rgba(251,146,60,0.12);
+            --red: #ff5555;
+            --yellow: #ffe44a;
+            --text: #e8f4ff;
+            --text-dim: #7a9ab8;
+            --text-muted: #3d5a74;
+            --font: 'Outfit', sans-serif;
+            --mono: 'Space Mono', monospace;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font); background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.6; }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 3px; }
+
+        /* GRID BG */
+        .grid-bg {
+            background-image: linear-gradient(rgba(0,212,255,0.04) 1px,transparent 1px), linear-gradient(90deg,rgba(0,212,255,0.04) 1px,transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* NAV */
+        #nav {
+            position: sticky; top: 0; z-index: 100;
+            padding: 14px 24px;
+            display: flex; align-items: center; justify-content: space-between;
+            background: rgba(5,10,18,0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+        .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .nav-logo-mark {
+            width: 38px; height: 38px;
+            background: linear-gradient(135deg, var(--cyan), var(--blue));
+            border-radius: 10px; display: flex; align-items: center; justify-content: center;
+            font-weight: 900; font-size: 17px; color: #000;
+            box-shadow: 0 0 16px var(--cyan-glow);
+        }
+        .nav-logo-text { font-weight: 800; font-size: 17px; color: var(--text); letter-spacing: 2px; }
+        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-dim); font-size: 13px; font-weight: 500; letter-spacing: 0.5px; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--cyan); }
+        .nav-back { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text-dim); font-size: 13px; font-weight: 500; transition: color 0.2s; }
+        .nav-back:hover { color: var(--cyan); }
+        #menuBtn { display: none; background: none; border: 1px solid var(--border); color: var(--text); width: 38px; height: 38px; border-radius: 8px; cursor: pointer; align-items: center; justify-content: center; font-size: 15px; }
+        #mobileMenu { display: none; position: fixed; top: 66px; left: 0; right: 0; background: rgba(5,10,18,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 12px 24px; z-index: 99; flex-direction: column; gap: 2px; }
+        #mobileMenu.open { display: flex; }
+        #mobileMenu a { text-decoration: none; color: var(--text-dim); padding: 10px 0; font-size: 14px; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+        #mobileMenu a:last-child { border-bottom: none; }
+        #mobileMenu a:hover { color: var(--cyan); }
+
+        /* HERO */
+        #hero {
+            padding: 80px 24px 120px; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .orb { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            border: 1px solid var(--border); background: var(--cyan-dim);
+            padding: 7px 18px; border-radius: 50px;
+            font-size: 12px; color: var(--cyan); font-family: var(--mono); margin-bottom: 28px;
+        }
+        .hero-badge .dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; animation: blink 2s infinite; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        .hero-h1 { font-size: clamp(38px,7vw,72px); font-weight: 900; letter-spacing: -2px; line-height: 1.05; margin-bottom: 20px; }
+        .hero-h1 .accent { background: linear-gradient(90deg, var(--cyan), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero-sub { color: var(--text-dim); font-size: clamp(14px,2vw,18px); max-width: 600px; margin: 0 auto 36px; }
+        .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 52px; }
+
+        /* NAV TABS (anchor pill bar) */
+        .tab-bar {
+            display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+        }
+        .tab-link {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--surface); border: 1px solid var(--border);
+            color: var(--text-dim); font-size: 13px; font-weight: 600;
+            padding: 10px 20px; border-radius: 50px; text-decoration: none;
+            transition: all 0.25s;
+        }
+        .tab-link:hover { border-color: var(--cyan); color: var(--cyan); background: var(--cyan-dim); }
+        .tab-link.blue:hover   { border-color: #6699ff; color: #6699ff; background: rgba(0,102,255,0.08); }
+        .tab-link.purple:hover { border-color: var(--purple); color: var(--purple); background: var(--purple-dim); }
+        .tab-link.green:hover  { border-color: var(--green); color: var(--green); background: var(--green-dim); }
+        .tab-link.orange:hover { border-color: var(--orange); color: var(--orange); background: var(--orange-dim); }
+
+        /* BUTTONS */
+        .btn-primary { display: inline-flex; align-items: center; gap: 9px; background: linear-gradient(135deg, #00e87a, #00b85e); color: #000; font-weight: 700; font-size: 14px; padding: 12px 28px; border-radius: 50px; text-decoration: none; box-shadow: 0 0 24px rgba(0,232,122,0.25); transition: all 0.25s; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(0,232,122,0.45); }
+        .btn-outline { display: inline-flex; align-items: center; gap: 9px; border: 1px solid var(--border); background: var(--cyan-dim); color: var(--text); font-weight: 600; font-size: 14px; padding: 12px 28px; border-radius: 50px; text-decoration: none; transition: all 0.25s; }
+        .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-2px); }
+
+        .btn-wa { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: linear-gradient(135deg, #25d366, #1da851); color: #000; font-weight: 700; font-size: 13px; padding: 11px 22px; border-radius: 10px; text-decoration: none; transition: all 0.25s; box-shadow: 0 0 18px rgba(37,211,102,0.2); }
+        .btn-wa:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(37,211,102,0.4); }
+
+        /* SECTION LAYOUT */
+        .main-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .service-section { padding: 80px 0; border-top: 1px solid var(--border-light); scroll-margin-top: 80px; }
+
+        /* SERVICE CARD WRAPPER */
+        .service-wrap {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        /* SERVICE HEADER */
+        .svc-header {
+            display: flex; align-items: center; gap: 20px;
+            padding: 28px 36px;
+            border-bottom: 1px solid var(--border-light);
+            flex-wrap: wrap;
+        }
+        .svc-icon {
+            width: 60px; height: 60px; border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 26px; flex-shrink: 0;
+        }
+        .svc-title { font-size: clamp(20px,3vw,28px); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 4px; }
+        .svc-sub { color: var(--text-dim); font-size: 14px; }
+        .svc-badge { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; border-radius: 50px; font-size: 12px; font-weight: 700; font-family: var(--mono); }
+
+        /* SERVICE BODY */
+        .svc-body { display: grid; grid-template-columns: 1fr 340px; gap: 0; }
+        .svc-left { padding: 32px 36px; border-right: 1px solid var(--border-light); }
+        .svc-right { padding: 32px 28px; background: rgba(0,0,0,0.15); display: flex; flex-direction: column; gap: 20px; }
+
+        /* SUBSECTION TITLE */
+        .sub-title { font-size: 17px; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+        .sub-title i { font-size: 15px; }
+
+        /* ITEM GRID */
+        .item-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 28px; }
+        .item-card {
+            background: rgba(0,0,0,0.2); border: 1px solid var(--border-light);
+            border-radius: 14px; padding: 16px;
+            border-left: 3px solid;
+            transition: all 0.25s;
+        }
+        .item-card:hover { transform: translateY(-2px); }
+        .item-card-title { font-weight: 700; font-size: 13px; margin-bottom: 6px; }
+        .item-card-desc { color: var(--text-dim); font-size: 12px; line-height: 1.65; }
+
+        /* ALERT BOX */
+        .alert-box { border-radius: 14px; padding: 18px 20px; margin-bottom: 24px; border-left: 3px solid; }
+        .alert-title { font-weight: 700; font-size: 13px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .alert-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+        .alert-list li { font-size: 12px; display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
+
+        /* WHY BOX */
+        .why-box { background: rgba(0,0,0,0.25); border: 1px solid var(--border-light); border-radius: 16px; padding: 20px; }
+        .why-title { font-size: 14px; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+        .why-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .why-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-dim); }
+        .why-list li i { color: var(--green); margin-top: 2px; flex-shrink: 0; }
+
+        /* PRICE TABLE */
+        .price-box { background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
+        .price-box-title { font-size: 13px; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; font-family: var(--mono); letter-spacing: 1px; }
+        .price-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border-light); font-size: 13px; }
+        .price-row:last-child { border-bottom: none; }
+        .price-label { color: var(--text-dim); }
+        .price-val { font-weight: 700; }
+        .price-note { font-size: 11px; color: var(--text-muted); font-family: var(--mono); margin-top: 12px; font-style: italic; }
+
+        /* PRICE TIER (highlighted) */
+        .price-tier { border: 1px solid var(--border); border-radius: 12px; padding: 14px; margin-bottom: 10px; }
+        .price-tier.featured { border-color: rgba(0,212,255,0.4); background: var(--cyan-dim); }
+        .price-tier-name { font-weight: 700; font-size: 13px; margin-bottom: 3px; }
+        .price-tier-amount { font-size: 20px; font-weight: 800; }
+        .price-tier-sub { color: var(--text-muted); font-size: 11px; font-family: var(--mono); }
+        .price-tier-badge { font-size: 10px; font-weight: 700; font-family: var(--mono); padding: 2px 8px; border-radius: 50px; margin-top: 6px; display: inline-block; }
+
+        /* GUARANTEE BOX */
+        .guarantee-box { background: rgba(0,232,122,0.06); border: 1px solid rgba(0,232,122,0.2); border-radius: 14px; padding: 16px; }
+        .guarantee-title { font-size: 13px; font-weight: 700; color: var(--green); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .guarantee-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+        .guarantee-list li { font-size: 12px; color: var(--text-dim); display: flex; align-items: flex-start; gap: 8px; }
+        .guarantee-list li::before { content: '✓'; color: var(--green); flex-shrink: 0; font-weight: 700; }
+
+        /* BONUS BOX */
+        .bonus-box { background: rgba(0,102,255,0.08); border: 1px solid rgba(0,102,255,0.2); border-radius: 14px; padding: 16px; }
+        .bonus-title { font-size: 13px; font-weight: 700; color: #6699ff; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .bonus-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+        .bonus-list li { font-size: 12px; color: var(--text-dim); }
+
+        /* CHECK GRID */
+        .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 24px; }
+        .check-item { display: flex; align-items: flex-start; gap: 10px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-light); border-radius: 10px; padding: 12px; font-size: 12px; color: var(--text-dim); }
+        .check-item i { color: var(--purple); margin-top: 1px; flex-shrink: 0; }
+
+        /* APP CARDS */
+        .app-card { background: rgba(0,0,0,0.2); border: 1px solid var(--border-light); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; }
+        .app-card-name { font-weight: 700; font-size: 13px; margin-bottom: 5px; }
+        .app-card-desc { color: var(--text-dim); font-size: 12px; }
+
+        /* HERO BANNER (upgrade section) */
+        .upgrade-banner {
+            background: linear-gradient(135deg, rgba(0,232,122,0.15), rgba(0,232,122,0.05));
+            border: 1px solid rgba(0,232,122,0.3);
+            border-radius: 18px; padding: 28px; margin-bottom: 28px;
+        }
+        .upgrade-banner-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-bottom: 20px; }
+        .upgrade-banner-title { font-size: 20px; font-weight: 800; color: var(--green); margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+        .upgrade-banner-sub { color: var(--text-dim); font-size: 13px; max-width: 500px; line-height: 1.7; }
+        .upgrade-price-box { background: rgba(0,232,122,0.1); border: 1px solid rgba(0,232,122,0.3); border-radius: 14px; padding: 18px 24px; text-align: center; min-width: 160px; flex-shrink: 0; }
+        .ssd-options { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+        .ssd-opt { background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 12px; padding: 14px; text-align: center; transition: all 0.2s; }
+        .ssd-opt.featured { border-color: var(--yellow); background: rgba(255,228,74,0.08); }
+        .ssd-size { font-size: 20px; font-weight: 800; }
+        .ssd-price { font-size: 12px; color: var(--text-dim); font-family: var(--mono); }
+        .ssd-badge { font-size: 10px; color: var(--yellow); font-weight: 700; margin-top: 4px; font-family: var(--mono); }
+
+        /* RAM CARDS */
+        .ram-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 24px; }
+        .ram-card { background: rgba(0,0,0,0.25); border: 1px solid rgba(0,232,122,0.2); border-radius: 14px; padding: 16px; text-align: center; }
+        .ram-size { font-size: 26px; font-weight: 900; color: var(--green); }
+        .ram-desc { color: var(--text-muted); font-size: 11px; margin: 6px 0; font-family: var(--mono); }
+        .ram-price { font-weight: 700; font-size: 13px; color: var(--green); }
+
+        /* COMPARE TABLE */
+        .compare-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+        .compare-col { background: rgba(0,0,0,0.25); border: 1px solid; border-radius: 14px; padding: 16px; }
+        .compare-col.bad { border-color: rgba(255,85,85,0.3); }
+        .compare-col.good { border-color: rgba(0,232,122,0.3); }
+        .compare-header { font-weight: 700; font-size: 13px; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+        .compare-row { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid var(--border-light); font-size: 12px; }
+        .compare-row:last-child { border-bottom: none; }
+        .compare-row span:first-child { color: var(--text-dim); }
+
+        /* MAINTENANCE ITEMS */
+        .maint-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+        .maint-item { display: flex; align-items: flex-start; gap: 12px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-light); border-radius: 12px; padding: 14px; }
+        .maint-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 16px; }
+        .maint-name { font-weight: 700; font-size: 13px; margin-bottom: 4px; }
+        .maint-desc { font-size: 12px; color: var(--text-dim); }
+
+        /* THERMAL BOX */
+        .thermal-box { background: rgba(255,85,85,0.07); border: 1px solid rgba(255,85,85,0.25); border-radius: 14px; padding: 20px; margin-bottom: 24px; }
+        .thermal-title { font-weight: 700; font-size: 14px; color: #ff8888; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .thermal-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+        .thermal-list li { font-size: 12px; color: var(--text-dim); display: flex; gap: 8px; }
+        .thermal-list li::before { content: '→'; color: var(--red); flex-shrink: 0; }
+        .thermal-note { background: rgba(0,0,0,0.3); border-radius: 10px; padding: 10px 14px; margin-top: 14px; font-size: 12px; color: var(--text-dim); }
+
+        /* SCHEDULE */
+        .sched-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 16px; }
+        .sched-card { background: rgba(0,0,0,0.25); border: 1px solid; border-radius: 12px; padding: 14px; text-align: center; }
+        .sched-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-size: 16px; }
+        .sched-label { font-weight: 700; font-size: 12px; margin-bottom: 4px; }
+        .sched-sub { font-size: 11px; color: var(--text-muted); font-family: var(--mono); margin-bottom: 8px; }
+        .sched-freq { font-size: 13px; font-weight: 800; }
+
+        /* PACKAGE BOX */
+        .package-box { background: var(--green-dim); border: 1px solid rgba(0,232,122,0.3); border-radius: 16px; padding: 20px; }
+        .package-title { font-size: 14px; font-weight: 700; text-align: center; color: var(--green); margin-bottom: 16px; }
+        .package-feature { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-dim); padding: 6px 0; }
+        .package-feature i { color: var(--green); flex-shrink: 0; }
+        .package-price { border-top: 1px solid rgba(0,232,122,0.2); margin-top: 16px; padding-top: 16px; text-align: center; }
+
+        /* COMPAT BOX */
+        .compat-box { background: rgba(0,0,0,0.25); border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
+        .compat-title { font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+        .compat-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+        .compat-list li { font-size: 12px; color: var(--text-dim); display: flex; align-items: flex-start; gap: 8px; }
+        .compat-list li::before { content: '?'; color: var(--cyan); font-weight: 700; flex-shrink: 0; font-family: var(--mono); }
+
+        /* OPTIM LIST */
+        .optim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .optim-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-dim); }
+        .optim-item i { color: var(--green); flex-shrink: 0; }
+
+        /* CTA SECTION */
+        #cta { padding: 100px 24px; }
+        .cta-inner {
+            max-width: 800px; margin: 0 auto; text-align: center;
+            background: linear-gradient(135deg, rgba(0,212,255,0.07), rgba(167,139,250,0.07));
+            border: 1px solid var(--border); border-radius: 28px; padding: 64px 48px;
+            position: relative; overflow: hidden;
+        }
+        .cta-inner::before { content: ''; position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 300px; height: 150px; background: radial-gradient(ellipse, rgba(0,212,255,0.12), transparent 70%); pointer-events: none; }
+        .cta-badge { display: inline-block; background: var(--cyan-dim); border: 1px solid rgba(0,212,255,0.3); color: var(--cyan); font-family: var(--mono); font-size: 11px; letter-spacing: 2px; padding: 5px 14px; border-radius: 50px; margin-bottom: 20px; }
+        .cta-h2 { font-size: clamp(24px,4vw,38px); font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
+        .cta-sub { color: var(--text-dim); font-size: 15px; max-width: 480px; margin: 0 auto 36px; }
+        .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px; }
+        .cta-stats { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; }
+        .cta-stat { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-dim); }
+        .cta-stat i { color: var(--cyan); }
+
+        .btn-phone { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(0,102,255,0.4); background: rgba(0,102,255,0.08); color: #6699ff; font-weight: 700; font-size: 14px; padding: 12px 28px; border-radius: 50px; text-decoration: none; transition: all 0.25s; }
+        .btn-phone:hover { border-color: #6699ff; background: rgba(0,102,255,0.15); transform: translateY(-2px); }
+
+        /* FOOTER */
+        footer { background: var(--surface); border-top: 1px solid var(--border); padding: 60px 24px 36px; }
+        .footer-inner { max-width: 1200px; margin: 0 auto; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+        .footer-brand p { color: var(--text-dim); font-size: 14px; line-height: 1.7; margin: 14px 0 20px; max-width: 300px; }
+        .footer-socials { display: flex; gap: 10px; }
+        .footer-social { width: 36px; height: 36px; border-radius: 9px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--text-dim); text-decoration: none; font-size: 14px; transition: all 0.2s; }
+        .footer-social:hover { border-color: var(--cyan); color: var(--cyan); background: var(--cyan-dim); }
+        .footer-col-title { font-weight: 700; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); font-family: var(--mono); margin-bottom: 18px; }
+        .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .footer-links a { text-decoration: none; color: var(--text-dim); font-size: 13px; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--cyan); }
+        .footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+        .footer-copy { color: var(--text-muted); font-size: 12px; font-family: var(--mono); }
+        .footer-love { color: var(--text-muted); font-size: 12px; font-family: var(--mono); }
+        .footer-love span { color: #ff5555; }
+
+        /* WA FLOAT */
+        #wa-float { position: fixed; bottom: 24px; right: 24px; z-index: 888; }
+        .wa-btn { display: flex; width: 56px; height: 56px; background: #25d366; border-radius: 50%; align-items: center; justify-content: center; color: #fff; font-size: 24px; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.4); position: relative; transition: all 0.25s; }
+        .wa-btn::before { content: ''; position: absolute; inset: -6px; border-radius: 50%; border: 2px solid rgba(37,211,102,0.4); animation: pulse-wa 2s ease-in-out infinite; }
+        @keyframes pulse-wa { 0%,100%{transform:scale(1);opacity:0.8} 50%{transform:scale(1.15);opacity:0} }
+        .wa-btn:hover { transform: scale(1.1); }
+        .wa-dot { position: absolute; top: -3px; right: -3px; width: 15px; height: 15px; background: #ff5555; border-radius: 50%; border: 2px solid var(--bg); font-size: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff; font-family: var(--mono); }
+
+        /* RESPONSIVE */
+        @media (max-width: 960px) {
+            .svc-body { grid-template-columns: 1fr; }
+            .svc-left { border-right: none; border-bottom: 1px solid var(--border-light); }
+        }
+        @media (max-width: 768px) {
+            .item-grid, .check-grid, .maint-grid, .compare-wrap, .ssd-options, .ram-grid, .sched-grid, .optim-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+            .cta-inner { padding: 40px 24px; }
+            .svc-header { padding: 20px 22px; }
+            .svc-left, .svc-right { padding: 22px; }
+            .upgrade-banner { padding: 20px; }
+            .upgrade-banner-top { flex-direction: column; }
+        }
+        @media (max-width: 640px) {
+            #menuBtn { display: flex; }
+            .nav-links { display: none; }
+            .nav-back-desktop { display: none; }
+            .hero-btns { flex-direction: column; align-items: center; }
+            .tab-bar { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
+            .tab-link { white-space: nowrap; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+    <a href="https://www.xcompsalatiga.online/xcomp" class="nav-logo">
+        <div class="nav-logo-mark">X</div>
+        <span class="nav-logo-text">XCOMP</span>
+    </a>
+    <ul class="nav-links">
+        <li><a href="#hardware">Hardware</a></li>
+        <li><a href="#software">Software</a></li>
+        <li><a href="#upgrade">Upgrade</a></li>
+        <li><a href="#maintenance">Maintenance</a></li>
+    </ul>
+    <a href="https://www.xcompsalatiga.online/xcomp" class="nav-back nav-back-desktop">
+        <i class="fas fa-arrow-left"></i> Kembali
+    </a>
+    <button id="menuBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu">
+    <a href="#hardware">🔧 Hardware</a>
+    <a href="#software">💻 Software</a>
+    <a href="#upgrade">⚡ Upgrade</a>
+    <a href="#maintenance">🛡️ Maintenance</a>
+    <a href="https://www.xcompsalatiga.online/xcomp" style="color:var(--cyan)!important;">← Kembali ke Beranda</a>
+</div>
+
+<!-- HERO -->
+<section id="hero" class="grid-bg">
+    <div class="orb" style="width:450px;height:450px;background:radial-gradient(rgba(0,102,255,0.15),transparent 70%);top:-80px;left:-120px;"></div>
+    <div class="orb" style="width:350px;height:350px;background:radial-gradient(rgba(0,212,255,0.1),transparent 70%);bottom:-60px;right:-80px;"></div>
+
+    <div style="position:relative;z-index:2;">
+        <div class="hero-badge">
+            <div class="dot"></div>
+            <span>GRATIS KONSULTASI</span>
+        </div>
+        <h1 class="hero-h1">
+            Layanan Service Laptop<br>
+            <span class="accent">Lengkap & Terpercaya</span>
+        </h1>
+        <p class="hero-sub">Dari perbaikan hardware, install software, upgrade performa, hingga perawatan rutin. Semua dijelaskan dengan bahasa sederhana agar mudah dipahami.</p>
+        <div class="hero-btns">
+            <a href="#hardware" class="btn-outline"><i class="fas fa-laptop-medical"></i> Lihat Layanan</a>
+            <a href="https://wa.me/6285161992527" target="_blank" class="btn-primary"><i class="fab fa-whatsapp" style="font-size:18px;"></i> Konsultasi Gratis</a>
+        </div>
+        <div class="tab-bar">
+            <a href="#hardware" class="tab-link blue"><i class="fas fa-laptop-medical"></i> Service Hardware</a>
+            <a href="#software" class="tab-link purple"><i class="fas fa-code"></i> Software & OS</a>
+            <a href="#upgrade" class="tab-link green"><i class="fas fa-bolt"></i> Upgrade Performance</a>
+            <a href="#maintenance" class="tab-link orange"><i class="fas fa-shield-alt"></i> Maintenance</a>
+        </div>
+    </div>
+</section>
+
+<div class="main-container">
+
+    <!-- ===================== SERVICE 1: HARDWARE ===================== -->
+    <section id="hardware" class="service-section">
+        <div class="service-wrap">
+            <!-- Header -->
+            <div class="svc-header">
+                <div class="svc-icon" style="background:rgba(0,102,255,0.15);color:#6699ff;">
+                    <i class="fas fa-laptop-medical"></i>
+                </div>
+                <div>
+                    <div class="svc-title">Service Hardware</div>
+                    <div class="svc-sub">Perbaikan komponen fisik laptop Anda oleh teknisi ahli</div>
+                </div>
+                <div class="svc-badge" style="background:rgba(0,232,122,0.1);color:var(--green);border:1px solid rgba(0,232,122,0.3);">
+                    <i class="fas fa-check-circle"></i> Garansi 14–30 Hari
+                </div>
+            </div>
+
+            <!-- Body -->
+            <div class="svc-body">
+                <!-- LEFT -->
+                <div class="svc-left">
+                    <div class="sub-title" style="color:#6699ff;"><i class="fas fa-wrench"></i> Apa Saja yang Bisa Kami Perbaiki?</div>
+                    <div class="item-grid">
+                        <div class="item-card" style="border-left-color:#6699ff;background:rgba(0,102,255,0.06);">
+                            <div class="item-card-title">🔌 Motherboard</div>
+                            <div class="item-card-desc">Perbaikan jalur putus, IC power rusak, chipset error, port USB/HDMI tidak berfungsi, dan masalah kelistrikan lainnya.</div>
+                        </div>
+                        <div class="item-card" style="border-left-color:#6699ff;background:rgba(0,102,255,0.06);">
+                            <div class="item-card-title">🖥️ LCD / Layar</div>
+                            <div class="item-card-desc">Ganti layar pecah, bergaris vertikal/horizontal, blank hitam, flickering, atau inverter rusak.</div>
+                        </div>
+                        <div class="item-card" style="border-left-color:#6699ff;background:rgba(0,102,255,0.06);">
+                            <div class="item-card-title">⌨️ Keyboard</div>
+                            <div class="item-card-desc">Tombol hilang, tidak responsif, keyboard mengetik sendiri, atau rusak total karena terkena air.</div>
+                        </div>
+                        <div class="item-card" style="border-left-color:#6699ff;background:rgba(0,102,255,0.06);">
+                            <div class="item-card-title">🔋 Battery & Charger</div>
+                            <div class="item-card-desc">Battery drop, tidak charging, port charger longgar/rusak, atau adaptor tidak berfungsi.</div>
+                        </div>
+                        <div class="item-card" style="border-left-color:#6699ff;background:rgba(0,102,255,0.06);">
+                            <div class="item-card-title">🔄 Engsel (Hinge)</div>
+                            <div class="item-card-desc">Engsel patah, longgar, laptop tidak bisa dibuka/tutup sempurna, atau casing retak di area engsel.</div>
+                        </div>
+                        <div class="item-card" style="border-left-color:#6699ff;background:rgba(0,102,255,0.06);">
+                            <div class="item-card-title">💾 Hard Drive / SSD</div>
+                            <div class="item-card-desc">Data tidak terbaca, laptop lemot ekstrem, bunyi klik aneh, atau upgrade ke SSD untuk performa lebih cepat.</div>
+                        </div>
+                    </div>
+
+                    <div class="alert-box" style="background:rgba(255,228,74,0.06);border-left-color:var(--yellow);margin-bottom:0;">
+                        <div class="alert-title" style="color:#ffe44a;"><i class="fas fa-exclamation-triangle"></i> Tanda Laptop Perlu Service Hardware:</div>
+                        <ul class="alert-list">
+                            <li><span style="color:var(--red);">●</span><span style="color:var(--text-dim);">Laptop mati total, tidak ada tanda kehidupan sama sekali</span></li>
+                            <li><span style="color:var(--red);">●</span><span style="color:var(--text-dim);">Layar pecah, bergaris, atau blank saat dinyalakan</span></li>
+                            <li><span style="color:var(--red);">●</span><span style="color:var(--text-dim);">Keyboard beberapa tombol tidak berfungsi atau mengetik sendiri</span></li>
+                            <li><span style="color:var(--red);">●</span><span style="color:var(--text-dim);">Battery cepat habis dalam 30 menit atau tidak mau charging</span></li>
+                            <li><span style="color:var(--red);">●</span><span style="color:var(--text-dim);">Ada bunyi "klik" atau "bzzz" aneh dari dalam laptop</span></li>
+                            <li><span style="color:var(--red);">●</span><span style="color:var(--text-dim);">Laptop sering mati mendadak atau restart sendiri</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="svc-right">
+                    <!-- Why -->
+                    <div class="why-box">
+                        <div class="why-title" style="color:var(--yellow);"><i class="fas fa-star" style="color:var(--yellow);"></i> Kenapa Pilih Xcomp?</div>
+                        <ul class="why-list">
+                            <li><i class="fas fa-check-circle"></i> Teknisi berpengalaman 5+ tahun di bidang hardware</li>
+                            <li><i class="fas fa-check-circle"></i> Garansi service 14-40 hari tergantung jenis perbaikan</li>
+                            <li><i class="fas fa-check-circle"></i> Sparepart original & bergaransi distributor</li>
+                            <li><i class="fas fa-check-circle"></i> Harga dan informasi pengerjaan yang transparan</li>
+                            <li><i class="fas fa-check-circle"></i> Gratis diagnosa awal sebelum memutuskan service</li>
+                        </ul>
+                    </div>
+
+                    <!-- Price -->
+                    <div class="price-box">
+                        <div class="price-box-title" style="color:#6699ff;">// ESTIMASI HARGA SERVICE</div>
+                        <div class="price-row"><span class="price-label">Diagnosa Awal</span><span class="price-val" style="color:var(--green);">GRATIS</span></div>
+                        <div class="price-row"><span class="price-label">Service Ringan</span><span class="price-val" style="color:#6699ff;">Mulai 50rb</span></div>
+                        <div class="price-row"><span class="price-label">Ganti Keyboard</span><span class="price-val" style="color:#6699ff;">Mulai 200rb</span></div>
+                        <div class="price-row"><span class="price-label">Ganti LCD</span><span class="price-val" style="color:#6699ff;">Mulai 800rb</span></div>
+                        <div class="price-row"><span class="price-label">Service Motherboard</span><span class="price-val" style="color:#6699ff;">Mulai 700rb</span></div>
+                        <div class="price-note">*Harga final setelah diagnosa. Tergantung tipe laptop & tingkat kerusakan.</div>
+                    </div>
+
+                    <a href="https://wa.me/6285161992527?text=Halo%20XComp,%20saya%20ingin%20konsultasi%20service%20hardware%20laptop" target="_blank" class="btn-wa">
+                        <i class="fab fa-whatsapp"></i> Tanya Harga via WA
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ===================== SERVICE 2: SOFTWARE ===================== -->
+    <section id="software" class="service-section">
+        <div class="service-wrap">
+            <div class="svc-header">
+                <div class="svc-icon" style="background:var(--purple-dim);color:var(--purple);">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div>
+                    <div class="svc-title">Software & Operating System</div>
+                    <div class="svc-sub">Install ulang, perbaikan sistem, dan aplikasi profesional</div>
+                </div>
+                <div class="svc-badge" style="background:var(--purple-dim);color:var(--purple);border:1px solid rgba(167,139,250,0.3);">
+                    <i class="fas fa-bolt"></i> Pengerjaan 1–2 Hari
+                </div>
+            </div>
+
+            <div class="svc-body">
+                <!-- LEFT -->
+                <div class="svc-left">
+                    <div class="sub-title" style="color:var(--purple);"><i class="fab fa-windows"></i> Install Ulang Windows</div>
+                    <p style="color:var(--text-dim);font-size:13px;margin-bottom:16px;">Kami menginstall Windows 10/11 original dengan lisensi resmi. Proses kami lakukan dengan hati-hati:</p>
+                    <div class="check-grid" style="margin-bottom:24px;">
+                        <div class="check-item"><i class="fas fa-check"></i><span>Backup data penting Anda sebelum install</span></div>
+                        <div class="check-item"><i class="fas fa-check"></i><span>Install Windows fresh & clean tanpa bloatware</span></div>
+                        <div class="check-item"><i class="fas fa-check"></i><span>Install semua driver lengkap (WiFi, Audio, VGA)</span></div>
+                        <div class="check-item"><i class="fas fa-check"></i><span>Update Windows & driver ke versi terbaru</span></div>
+                        <div class="check-item"><i class="fas fa-check"></i><span>Optimasi setting agar laptop lebih cepat</span></div>
+                        <div class="check-item"><i class="fas fa-check"></i><span>Aktifkan Windows Defender & firewall</span></div>
+                    </div>
+
+                    <!-- Antivirus -->
+                    <div class="alert-box" style="background:rgba(0,232,122,0.06);border-left-color:var(--green);margin-bottom:24px;">
+                        <div class="alert-title" style="color:var(--green);"><i class="fas fa-shield-virus"></i> Proteksi Antivirus & Keamanan</div>
+                        <ul class="alert-list">
+                            <li><span style="color:var(--green);">✓</span><span style="color:var(--text-dim);">Install antivirus (Avast, AVG, Kaspersky, atau Windows Defender optimal)</span></li>
+                            <li><span style="color:var(--green);">✓</span><span style="color:var(--text-dim);">Scan menyeluruh & bersihkan virus yang sudah terlanjur masuk</span></li>
+                            <li><span style="color:var(--green);">✓</span><span style="color:var(--text-dim);">Setup firewall, Windows Update, dan keamanan sistem</span></li>
+                            <li><span style="color:var(--green);">✓</span><span style="color:var(--text-dim);">Tips praktis menghindari phishing & scam online</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="sub-title" style="color:var(--purple);margin-bottom:14px;"><i class="fas fa-download"></i> Install Aplikasi Profesional</div>
+                    <div class="app-card">
+                        <div class="app-card-name">📁 Office & Produktivitas</div>
+                        <div class="app-card-desc">Microsoft Office (Word, Excel, PowerPoint), LibreOffice, PDF Reader, Notion, dan aplikasi kerja lainnya.</div>
+                    </div>
+                    <div class="app-card">
+                        <div class="app-card-name">🎨 Design & Multimedia</div>
+                        <div class="app-card-desc">Adobe Photoshop, CorelDraw, Canva, CapCut, Premiere, dan software editing untuk konten kreator.</div>
+                    </div>
+                    <div class="app-card">
+                        <div class="app-card-name">🌐 Browser & Internet</div>
+                        <div class="app-card-desc">Google Chrome, Firefox, Edge dengan setting optimal, ekstensi produktif, dan sinkronisasi akun.</div>
+                    </div>
+                    <div class="app-card" style="margin-bottom:24px;">
+                        <div class="app-card-name">⚙️ Utilities Pendukung</div>
+                        <div class="app-card-desc">WinRAR, 7-Zip, TeamViewer, CCleaner, dan aplikasi pendukung lainnya sesuai kebutuhan.</div>
+                    </div>
+
+                    <div class="alert-box" style="background:rgba(0,102,255,0.07);border-left-color:#6699ff;margin-bottom:0;">
+                        <div class="alert-title" style="color:#6699ff;"><i class="fas fa-lightbulb"></i> Kapan Perlu Install Ulang Windows?</div>
+                        <ul class="alert-list">
+                            <li><span style="color:#6699ff;">→</span><span style="color:var(--text-dim);">Laptop lemot parah, buka aplikasi saja loading lama</span></li>
+                            <li><span style="color:#6699ff;">→</span><span style="color:var(--text-dim);">Sering muncul error, blue screen, atau freeze tiba-tiba</span></li>
+                            <li><span style="color:#6699ff;">→</span><span style="color:var(--text-dim);">Terkena virus berat yang sulit dibersihkan</span></li>
+                            <li><span style="color:#6699ff;">→</span><span style="color:var(--text-dim);">Ingin upgrade dari Windows 7/8 ke Windows 10/11</span></li>
+                            <li><span style="color:#6699ff;">→</span><span style="color:var(--text-dim);">Baru beli laptop bekas dan ingin sistem yang bersih</span></li>
+                            <li><span style="color:#6699ff;">→</span><span style="color:var(--text-dim);">Sistem corrupt setelah update gagal atau instalasi bermasalah</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="svc-right">
+                    <div class="price-box">
+                        <div class="price-box-title" style="color:var(--purple);">// PAKET HARGA SOFTWARE</div>
+                        <div class="price-row"><span class="price-label">Install Ulang Windows</span><span class="price-val" style="color:var(--purple);">Rp 100.000</span></div>
+                        <div class="price-row"><span class="price-label">Cleaning Ringan</span><span class="price-val" style="color:var(--purple);">Rp 50.000</span></div>
+                        <div class="price-row"><span class="price-label">Scan & Bersihkan Virus</span><span class="price-val" style="color:var(--purple);">Rp 50.000</span></div>
+                    </div>
+
+                    <!-- Featured package -->
+                    <div class="price-tier featured">
+                        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                            <div>
+                                <div class="price-tier-name" style="color:var(--cyan);">🔥 Paket Hemat</div>
+                                <div class="price-tier-sub">Windows + Cleaning + Antivirus</div>
+                            </div>
+                            <div class="price-tier-amount" style="color:var(--yellow);">Rp 150.000</div>
+                        </div>
+                    </div>
+                    <div style="font-size:11px;color:var(--text-muted);font-family:var(--mono);margin-top:-8px;margin-bottom:16px;">*Gratis konsultasi aplikasi yang Anda butuhkan.</div>
+
+                    <div class="guarantee-box">
+                        <div class="guarantee-title"><i class="fas fa-shield-check"></i> Garansi Software</div>
+                        <ul class="guarantee-list">
+                            <li>Garansi 7 hari untuk error setelah install</li>
+                            <li>Gratis revisi jika driver tidak kompatibel</li>
+                            <li>Backup data Anda sebelum pengerjaan</li>
+                            <li>Pengerjaan 1–2 Hari</li>
+                        </ul>
+                    </div>
+
+                    <a href="https://wa.me/6285161992527?text=Halo%20XComp,%20saya%20ingin%20Paket%20Hemat%20install%20ulang%20windows" target="_blank" class="btn-wa">
+                        <i class="fab fa-whatsapp"></i> Request Install via WA
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ===================== SERVICE 3: UPGRADE ===================== -->
+    <section id="upgrade" class="service-section">
+        <div class="service-wrap">
+            <div class="svc-header">
+                <div class="svc-icon" style="background:var(--green-dim);color:var(--green);">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div>
+                    <div class="svc-title">Upgrade Performance</div>
+                    <div class="svc-sub">Tingkatkan kecepatan laptop hingga 5× lebih cepat</div>
+                </div>
+                <div class="svc-badge" style="background:var(--green-dim);color:var(--green);border:1px solid rgba(0,232,122,0.3);">
+                    <i class="fas fa-rocket"></i> Paling Laris!
+                </div>
+            </div>
+
+            <div class="svc-body">
+                <!-- LEFT -->
+                <div class="svc-left">
+                    <!-- SSD Banner -->
+                    <div class="upgrade-banner">
+                        <div class="upgrade-banner-top">
+                            <div>
+                                <div class="upgrade-banner-title"><i class="fas fa-rocket"></i> Paket Upgrade SSD Paling Populer!</div>
+                                <div class="upgrade-banner-sub">Ganti HDD lama Anda dengan SSD dan rasakan perbedaannya! Laptop booting dalam hitungan detik, buka aplikasi lebih cepat, dan multitasking lebih lancar tanpa lag.</div>
+                            </div>
+                            <div class="upgrade-price-box">
+                                <div style="font-size:12px;color:var(--text-muted);font-family:var(--mono);">MULAI DARI</div>
+                                <div style="font-size:26px;font-weight:900;color:var(--green);letter-spacing:-1px;">Rp 600.000</div>
+                                <div style="font-size:11px;color:var(--text-muted);font-family:var(--mono);">SSD 128GB + Install</div>
+                            </div>
+                        </div>
+                        <div class="ssd-options">
+                            <div class="ssd-opt">
+                                <div class="ssd-size">128GB</div>
+                                <div class="ssd-price">Mulai 550rb</div>
+                            </div>
+                            <div class="ssd-opt featured">
+                                <div class="ssd-size" style="color:var(--yellow);">256GB</div>
+                                <div class="ssd-price" style="color:var(--yellow);">Mulai 750rb</div>
+                                <div class="ssd-badge">★ Best Value</div>
+                            </div>
+                            <div class="ssd-opt">
+                                <div class="ssd-size">512GB</div>
+                                <div class="ssd-price">Mulai 950rb</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RAM -->
+                    <div class="sub-title" style="color:var(--green);"><i class="fas fa-microchip"></i> Upgrade RAM: Multitasking Lebih Lancar</div>
+                    <p style="color:var(--text-dim);font-size:13px;margin-bottom:16px;">Tambah kapasitas RAM agar laptop tidak lemot saat buka banyak aplikasi, edit video, atau main game.</p>
+                    <div class="ram-grid" style="margin-bottom:24px;">
+                        <div class="ram-card">
+                            <div class="ram-size">4GB</div>
+                            <div class="ram-desc">cukup untuk office & browsing</div>
+                            <div class="ram-price">Mulai 500rb</div>
+                        </div>
+                        <div class="ram-card" style="border-color:rgba(0,232,122,0.4);">
+                            <div class="ram-size">8GB</div>
+                            <div class="ram-desc">ideal untuk multitasking & editing ringan</div>
+                            <div class="ram-price">Mulai 650rb</div>
+                        </div>
+                        <div class="ram-card" style="border-color:rgba(0,232,122,0.6);">
+                            <div class="ram-size">16GB</div>
+                            <div class="ram-desc">powerful untuk gaming & video editing</div>
+                            <div class="ram-price">Mulai 800rb</div>
+                        </div>
+                    </div>
+
+                    <!-- Optimasi -->
+                    <div class="alert-box" style="background:rgba(0,102,255,0.07);border-left-color:#6699ff;margin-bottom:24px;">
+                        <div class="alert-title" style="color:#6699ff;"><i class="fas fa-tachometer-alt"></i> Optimasi Sistem: Gratis dengan Setiap Upgrade!</div>
+                        <div class="optim-grid" style="margin-top:8px;">
+                            <div class="optim-item"><i class="fas fa-check-circle"></i> Cleanup file sampah & temporary files</div>
+                            <div class="optim-item"><i class="fas fa-check-circle"></i> Disable startup program yang tidak perlu</div>
+                            <div class="optim-item"><i class="fas fa-check-circle"></i> Optimasi visual effects Windows</div>
+                            <div class="optim-item"><i class="fas fa-check-circle"></i> Update driver terbaru untuk performa</div>
+                            <div class="optim-item"><i class="fas fa-check-circle"></i> Setting power plan ke High Performance</div>
+                            <div class="optim-item"><i class="fas fa-check-circle"></i> Defrag & optimize storage (untuk HDD)</div>
+                        </div>
+                    </div>
+
+                    <!-- Compare -->
+                    <div class="sub-title" style="color:var(--green);"><i class="fas fa-chart-line"></i> Sebelum vs Sesudah Upgrade SSD</div>
+                    <div class="compare-wrap">
+                        <div class="compare-col bad">
+                            <div class="compare-header" style="color:var(--red);"><i class="fas fa-times-circle"></i> Sebelum (HDD)</div>
+                            <div class="compare-row"><span>Booting Windows</span><span style="color:var(--red);font-weight:700;">2–3 menit</span></div>
+                            <div class="compare-row"><span>Buka Aplikasi</span><span style="color:var(--red);font-weight:700;">10–30 detik</span></div>
+                            <div class="compare-row"><span>Copy File 1GB</span><span style="color:var(--red);font-weight:700;">5–10 menit</span></div>
+                            <div class="compare-row"><span>Multitasking</span><span style="color:var(--red);font-weight:700;">Sering lag</span></div>
+                            <div class="compare-row"><span>Suara</span><span style="color:var(--red);font-weight:700;">Berisik</span></div>
+                            <div class="compare-row"><span>Ketahanan</span><span style="color:var(--red);font-weight:700;">Rentan</span></div>
+                        </div>
+                        <div class="compare-col good">
+                            <div class="compare-header" style="color:var(--green);"><i class="fas fa-check-circle"></i> Sesudah (SSD)</div>
+                            <div class="compare-row"><span>Booting Windows</span><span style="color:var(--green);font-weight:700;">10–20 detik</span></div>
+                            <div class="compare-row"><span>Buka Aplikasi</span><span style="color:var(--green);font-weight:700;">2–5 detik</span></div>
+                            <div class="compare-row"><span>Copy File 1GB</span><span style="color:var(--green);font-weight:700;">1–3 menit</span></div>
+                            <div class="compare-row"><span>Multitasking</span><span style="color:var(--green);font-weight:700;">Smooth & cepat</span></div>
+                            <div class="compare-row"><span>Suara</span><span style="color:var(--green);font-weight:700;">Senyap</span></div>
+                            <div class="compare-row"><span>Ketahanan</span><span style="color:var(--green);font-weight:700;">Tahan banting</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="svc-right">
+                    <!-- Complete package -->
+                    <div class="package-box">
+                        <div class="package-title">🎁 Paket Lengkap Upgrade</div>
+                        <div class="package-feature"><i class="fas fa-check-circle"></i> SSD 256GB Original</div>
+                        <div class="package-feature"><i class="fas fa-check-circle"></i> Install Windows + Driver Lengkap</div>
+                        <div class="package-feature"><i class="fas fa-check-circle"></i> Install Office + Aplikasi Dasar</div>
+                        <div class="package-feature"><i class="fas fa-check-circle"></i> Deep Cleaning + Ganti Thermal Paste</div>
+                        <div class="package-feature"><i class="fas fa-check-circle"></i> Optimasi Sistem untuk Performa Maksimal</div>
+                        <div class="package-feature"><i class="fas fa-check-circle"></i> Bergaransi</div>
+                        <div class="package-price">
+                            <div style="font-size:11px;color:var(--text-muted);font-family:var(--mono);">HARGA PAKET HEMAT MULAI DARI</div>
+                            <div style="font-size:28px;font-weight:900;color:var(--green);letter-spacing:-1px;">Rp 800.000</div>
+                            <div style="font-size:11px;color:var(--text-muted);">(Hemat 100rb vs beli terpisah!)</div>
+                        </div>
+                    </div>
+
+                    <!-- Compat check -->
+                    <div class="compat-box">
+                        <div class="compat-title">🔍 Cek Kompatibilitas Gratis</div>
+                        <p style="font-size:12px;color:var(--text-muted);margin-bottom:10px;">Tidak semua laptop bisa upgrade RAM/SSD. Kami bantu cek gratis:</p>
+                        <ul class="compat-list">
+                            <li>Slot RAM tersedia atau soldered?</li>
+                            <li>Tipe SSD: SATA 2.5" atau M.2 NVMe?</li>
+                            <li>Kapasitas maksimal yang didukung</li>
+                            <li>Kompatibilitas dengan sistem Anda</li>
+                        </ul>
+                    </div>
+
+                    <a href="https://wa.me/6285161992527?text=Halo%20XComp,%20saya%20tertarik%20paket%20Upgrade%20SSD" target="_blank" class="btn-wa" style="background:linear-gradient(135deg,var(--green),#00b85e);">
+                        <i class="fab fa-whatsapp"></i> Pesan Paket Upgrade
+                    </a>
+                    <div style="text-align:center;font-size:11px;color:var(--text-muted);font-family:var(--mono);">🚚 Gratis antar-jemput area Salatiga</div>
+                    <div style="font-size:11px;color:var(--text-muted);font-family:var(--mono);font-style:italic;">*Harga bisa berubah sewaktu-waktu, untuk harga pasti akan dikonfirmasi melalui WA</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ===================== SERVICE 4: MAINTENANCE ===================== -->
+    <section id="maintenance" class="service-section">
+        <div class="service-wrap">
+            <div class="svc-header">
+                <div class="svc-icon" style="background:var(--orange-dim);color:var(--orange);">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div>
+                    <div class="svc-title">Maintenance & Perawatan</div>
+                    <div class="svc-sub">Jaga laptop tetap sehat, dingin, dan awet bertahun-tahun</div>
+                </div>
+                <div class="svc-badge" style="background:var(--orange-dim);color:var(--orange);border:1px solid rgba(251,146,60,0.3);">
+                    <i class="fas fa-heart"></i> Preventif Terbaik
+                </div>
+            </div>
+
+            <div class="svc-body">
+                <!-- LEFT -->
+                <div class="svc-left">
+                    <div class="sub-title" style="color:var(--orange);"><i class="fas fa-broom"></i> Deep Cleaning: Bersihkan Debu yang Tak Terlihat</div>
+                    <p style="color:var(--text-dim);font-size:13px;margin-bottom:16px;">Pembersihan menyeluruh bagian dalam laptop yang tidak bisa Anda lakukan sendiri. Kami bongkar laptop dengan hati-hati dan bersihkan debu yang menumpuk di:</p>
+                    <div class="maint-grid" style="margin-bottom:28px;">
+                        <div class="maint-item">
+                            <div class="maint-icon" style="background:var(--orange-dim);color:var(--orange);"><i class="fas fa-wind"></i></div>
+                            <div>
+                                <div class="maint-name">Kipas (Fan)</div>
+                                <div class="maint-desc">Debu membuat kipas berputar berat, berisik, dan kurang efektif mendinginkan.</div>
+                            </div>
+                        </div>
+                        <div class="maint-item">
+                            <div class="maint-icon" style="background:var(--orange-dim);color:var(--orange);"><i class="fas fa-temperature-high"></i></div>
+                            <div>
+                                <div class="maint-name">Heat Sink</div>
+                                <div class="maint-desc">Sirip heat sink yang tersumbat debu menghambat pembuangan panas.</div>
+                            </div>
+                        </div>
+                        <div class="maint-item">
+                            <div class="maint-icon" style="background:var(--orange-dim);color:var(--orange);"><i class="fas fa-microchip"></i></div>
+                            <div>
+                                <div class="maint-name">Motherboard</div>
+                                <div class="maint-desc">Debu konduktif bisa menyebabkan korsleting jika dibiarkan terlalu lama.</div>
+                            </div>
+                        </div>
+                        <div class="maint-item">
+                            <div class="maint-icon" style="background:var(--orange-dim);color:var(--orange);"><i class="fas fa-keyboard"></i></div>
+                            <div>
+                                <div class="maint-name">Keyboard & Layar</div>
+                                <div class="maint-desc">Bersihkan noda, minyak, dan debu di area yang sering disentuh.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Thermal Paste -->
+                    <div class="thermal-box">
+                        <div class="thermal-title"><i class="fas fa-temperature-low"></i> Ganti Thermal Paste: Rahasia Laptop Tetap Dingin</div>
+                        <p style="font-size:12px;color:var(--text-dim);margin-bottom:12px;">Thermal paste adalah pasta pendingin yang menghantarkan panas dari processor ke heat sink. Seiring waktu (biasanya 1–2 tahun), pasta ini mengering dan kehilangan efektivitasnya.</p>
+                        <div style="font-size:12px;font-weight:700;color:#ff8888;margin-bottom:8px;">🔥 Tanda Thermal Paste Perlu Diganti:</div>
+                        <ul class="thermal-list">
+                            <li>Laptop cepat panas walau hanya buka browser</li>
+                            <li>Kipas berputar kencang terus-menerus (berisik)</li>
+                            <li>Laptop mati mendadak atau restart sendiri (overheat protection)</li>
+                            <li>Performa turun drastis (thermal throttling)</li>
+                            <li>Sudah lebih dari 1 tahun tidak pernah dibersihkan dalam</li>
+                        </ul>
+                        <div class="thermal-note"><strong>Kami menggunakan thermal paste premium, yang akan disesuaikan dengan device anda</strong></div>
+                    </div>
+
+                    <!-- Schedule -->
+                    <div class="sub-title" style="color:var(--orange);"><i class="fas fa-calendar-alt"></i> Jadwal Maintenance yang Disarankan</div>
+                    <div class="sched-grid">
+                        <div class="sched-card" style="border-color:rgba(0,232,122,0.3);">
+                            <div class="sched-icon" style="background:rgba(0,232,122,0.12);color:var(--green);"><i class="fas fa-laptop"></i></div>
+                            <div class="sched-label">Laptop Baru</div>
+                            <div class="sched-sub">0–12 bulan</div>
+                            <div class="sched-freq" style="color:var(--green);">Setiap 12 bulan</div>
+                        </div>
+                        <div class="sched-card" style="border-color:rgba(255,228,74,0.3);">
+                            <div class="sched-icon" style="background:rgba(255,228,74,0.1);color:var(--yellow);"><i class="fas fa-laptop-medical"></i></div>
+                            <div class="sched-label">Laptop 1–3 Tahun</div>
+                            <div class="sched-sub">penggunaan normal</div>
+                            <div class="sched-freq" style="color:var(--yellow);">Setiap 6–8 bulan</div>
+                        </div>
+                        <div class="sched-card" style="border-color:rgba(255,85,85,0.3);">
+                            <div class="sched-icon" style="background:rgba(255,85,85,0.1);color:var(--red);"><i class="fas fa-fire"></i></div>
+                            <div class="sched-label">Heavy User / Gaming</div>
+                            <div class="sched-sub">edit video, main game</div>
+                            <div class="sched-freq" style="color:var(--red);">Setiap 3–6 bulan</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="svc-right">
+                    <!-- Pricing -->
+                    <div class="price-box">
+                        <div class="price-box-title" style="color:var(--orange);">// HARGA PAKET MAINTENANCE</div>
+
+                        <div class="price-tier" style="margin-bottom:10px;">
+                            <div class="price-tier-name">Basic Cleaning</div>
+                            <div class="price-tier-amount" style="color:var(--orange);">Rp 75.000</div>
+                            <div class="price-tier-sub">Bersihkan luar + kipas tanpa bongkar total</div>
+                        </div>
+                        <div class="price-tier featured" style="margin-bottom:10px;">
+                            <div class="price-tier-name" style="color:var(--cyan);">🔥 Deep Cleaning + Thermal</div>
+                            <div class="price-tier-amount" style="color:var(--yellow);">Rp 125.000</div>
+                            <div class="price-tier-sub">Bongkar total + ganti thermal paste premium</div>
+                            <div class="price-tier-badge" style="background:rgba(255,228,74,0.12);color:var(--yellow);">★ Paling Laris</div>
+                        </div>
+                        <div class="price-tier" style="margin-bottom:0;">
+                            <div class="price-tier-name">Paket Lengkap</div>
+                            <div class="price-tier-amount" style="color:var(--orange);">Rp 200.000</div>
+                            <div class="price-tier-sub">Deep Cleaning + Thermal + Optimasi Software</div>
+                        </div>
+                        <div class="price-note">*Harga bisa berbeda untuk laptop gaming/high-end. Konsultasi gratis via WA.</div>
+                    </div>
+
+                    <!-- Bonus -->
+                    <div class="bonus-box">
+                        <div class="bonus-title"><i class="fas fa-gift"></i> Bonus Gratis Setiap Maintenance!</div>
+                        <ul class="bonus-list">
+                            <li>✨ Cleaning keyboard & layar dengan cairan khusus</li>
+                            <li>🔋 Cek kesehatan battery (report kapasitas)</li>
+                            <li>💾 Cek kesehatan hard drive / SSD (SMART data)</li>
+                            <li>🧹 Bersihkan port USB, HDMI, dan audio jack</li>
+                            <li>💡 Tips perawatan harian agar laptop awet</li>
+                        </ul>
+                    </div>
+
+                    <!-- Guarantee -->
+                    <div class="guarantee-box">
+                        <div class="guarantee-title"><i class="fas fa-shield-check"></i> Garansi Service</div>
+                        <ul class="guarantee-list">
+                            <li>Garansi 30 hari untuk thermal paste & cleaning</li>
+                            <li>Jika masih overheat dalam garansi, kami bersihkan ulang GRATIS</li>
+                            <li>Dokumentasi foto sebelum & sesudah service</li>
+                            <li>Laptop dites 30 menit sebelum dikembalikan</li>
+                        </ul>
+                    </div>
+
+                    <a href="https://wa.me/6285161992527?text=Halo%20XComp,%20saya%20ingin%20jadwalkan%20maintenance%20laptop" target="_blank" class="btn-wa" style="background:linear-gradient(135deg,#fb923c,#ea7718);">
+                        <i class="fab fa-whatsapp"></i> Jadwalkan Maintenance
+                    </a>
+                    <div style="text-align:center;font-size:11px;color:var(--text-muted);font-family:var(--mono);">⏱ Pengerjaan 1–3 hari | tergantung antrian service</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div><!-- /main-container -->
+
+
+<!-- CTA SECTION -->
+<section id="cta">
+    <div class="cta-inner">
+        <div class="cta-badge">// BUTUH BANTUAN?</div>
+        <h2 class="cta-h2">Masih Ragu atau Punya Pertanyaan?</h2>
+        <p class="cta-sub">Konsultasikan masalah laptop Anda secara gratis. Tim teknisi kami siap membantu memberikan solusi terbaik sesuai kebutuhan dan budget Anda.</p>
+        <div class="cta-btns">
+            <a href="https://wa.me/6285161992527" target="_blank" class="btn-primary" style="font-size:15px;padding:14px 32px;">
+                <i class="fab fa-whatsapp" style="font-size:19px;"></i> Chat WhatsApp Sekarang
+            </a>
+            <a href="tel:085161992527" class="btn-phone">
+                <i class="fas fa-phone"></i> 0851-6199-2527
+            </a>
+        </div>
+        <div class="cta-stats">
+            <div class="cta-stat"><i class="fas fa-clock"></i> Respon Cepat</div>
+            <div class="cta-stat"><i class="fas fa-comment-alt"></i> Konsultasi Gratis</div>
+            <div class="cta-stat"><i class="fas fa-truck"></i> Gratis Antar-Jemput Salatiga</div>
+        </div>
+    </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="https://www.xcompsalatiga.online/xcomp" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+                    <div class="nav-logo-mark">X</div>
+                    <span style="font-weight:800;font-size:18px;color:var(--text);letter-spacing:2px;">XCOMP</span>
+                </a>
+                <p>Service laptop profesional dengan teknisi berpengalaman di Salatiga. Layanan COD & antar-jemput gratis. Harga transparan, garansi terpercaya.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/x.comp_sltg" target="_blank" class="footer-social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@x.comp27" target="_blank" class="footer-social" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://maps.app.goo.gl/mQxjYidGoWFHvMf76" target="_blank" class="footer-social" aria-label="Google Maps"><i class="fab fa-google"></i></a>
+                </div>
+            </div>
+            <div>
+                <div class="footer-col-title">Layanan</div>
+                <ul class="footer-links">
+                    <li><a href="#hardware">Service Hardware</a></li>
+                    <li><a href="#software">Install Software</a></li>
+                    <li><a href="#upgrade">Upgrade SSD/RAM</a></li>
+                    <li><a href="#maintenance">Maintenance</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-col-title">Informasi</div>
+                <ul class="footer-links">
+                    <li><a href="index.html#harga">Daftar Harga</a></li>
+                    <li><a href="index.html#testimoni">Testimoni</a></li>
+                    <li><a href="#">Garansi Service</a></li>
+                    <li><a href="index.html#kontak">Kontak Kami</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-copy">© 2026 Xcomp Service Laptop. All rights reserved.</div>
+            <div class="footer-love">Made with <span>♥</span> for Salatiga, Jawa Tengah</div>
+        </div>
+    </div>
+</footer>
+
+<!-- WA FLOAT -->
+<div id="wa-float">
+    <a href="https://wa.me/6285161992527?text=Halo%20XComp,%20saya%20ingin%20konsultasi%20service%20laptop" target="_blank" rel="noopener noreferrer" class="wa-btn" aria-label="Chat via WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <div class="wa-dot">!</div>
+    </a>
+</div>
+
+<script>
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+        menuBtn.querySelector('i').className = mobileMenu.classList.contains('open') ? 'fas fa-times' : 'fas fa-bars';
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            menuBtn.querySelector('i').className = 'fas fa-bars';
+        });
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.06 });
+
+    document.querySelectorAll('.service-wrap, .item-card, .maint-item, .sched-card, .compare-col, .ram-card').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(el);
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href && href.length > 1) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth' });
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
