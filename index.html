@@ -333,6 +333,7 @@ p{color:var(--text-2)}
 .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:rgba(79,126,255,.5);background:rgba(79,126,255,.05);box-shadow:0 0 0 3px rgba(79,126,255,.1)}
 .form-group select{cursor:none}
 .form-group textarea{resize:vertical;min-height:100px}
+.option-text{color:black}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:560px){.form-row{grid-template-columns:1fr}}
 
@@ -868,12 +869,12 @@ footer{padding:60px 0 28px;background:var(--bg-1);border-top:1px solid var(--bor
           <div class="form-group"><label>Alamat / Domisili</label><input type="text" id="alamat" required placeholder="Alamat lengkap"></div>
           <div class="form-row">
             <div class="form-group"><label>Merk / Seri Laptop</label><input type="text" id="laptop" required placeholder="Contoh: ASUS A456U"></div>
-            <div class="form-group"><label>Pilih Layanan</label>
+            <div class="form-group"><label>Pilih Layanan</label> 
               <select id="layanan" required>
-                <option value="">-- Pilih --</option>
-                <option>Antar-Jemput</option>
-                <option>COD (Ketemu di Lokasi)</option>
-                <option>Bawa ke Workshop</option>
+                <option class="option-text" value="">-- Pilih --</option> 
+                <option class="option-text">Antar-Jemput</option>
+                <option class="option-text">COD (Ketemu di Lokasi)</option>
+                <option class="option-text">Bawa ke Workshop</option>
               </select>
             </div>
           </div>
